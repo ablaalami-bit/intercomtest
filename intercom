@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Company</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --ink: #14213d;
+      --muted: #5b6475;
+      --accent: #2a5bd7;
+      --line: #dde1ea;
+      --surface: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1420;
+        --ink: #eef1f8;
+        --muted: #9aa4b8;
+        --accent: #7ea2ff;
+        --line: #26304a;
+        --surface: #161d2e;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    header, main, footer { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; padding-bottom: 24px;
+    }
+    .logo { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 24px; }
+    nav a:hover, nav a:focus-visible { color: var(--ink); }
+    .hero { padding: 80px 0 64px; max-width: 640px; }
+    h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.02em; }
+    .hero p { font-size: 1.15rem; color: var(--muted); margin: 0 0 32px; }
+    button.cta {
+      font: inherit; font-weight: 600; cursor: pointer;
+      background: var(--accent); color: #fff; border: 0;
+      padding: 14px 26px; border-radius: 8px;
+    }
+    button.cta:hover { filter: brightness(1.08); }
+    button.cta:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    button.ghost {
+      font: inherit; cursor: pointer; color: var(--ink);
+      background: var(--surface); border: 1px solid var(--line);
+      padding: 10px 16px; border-radius: 999px;
+    }
+    button.ghost:hover { border-color: var(--accent); }
+    button.ghost:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .badge {
+      display: none; margin-left: 8px; min-width: 22px; padding: 0 7px;
+      background: #d93a3a; color: #fff; border-radius: 999px;
+      font-size: 0.8rem; line-height: 22px; text-align: center;
+    }
+    .badge.on { display: inline-block; }
+    .panel { margin-top: 40px; }
+    .panel h2 { font-size: 1rem; margin: 0 0 12px; }
+    .identify { display: flex; flex-wrap: wrap; gap: 10px; }
+    .identify input {
+      font: inherit; padding: 10px 12px; border-radius: 8px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+      flex: 1 1 180px;
+    }
+    #status { margin-top: 16px; color: var(--muted); font-size: 0.9rem; min-height: 1.4em; }
+    .features { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); padding-bottom: 80px; }
+    .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+    .feature h2 { font-size: 1.05rem; margin: 0 0 8px; }
+    .feature p { margin: 0; color: var(--muted); }
+    footer { padding-top: 24px; padding-bottom: 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Your Company</div>
+    <nav>
+      <a href="#features">What we do</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Answers, the moment you need them.</h1>
+      <p>Replace this text with a line about what you do. Questions? Our team is a message away.</p>
+      <div class="actions">
+        <button class="cta" id="open-chat" type="button">Chat with us<span class="badge" id="unread" aria-live="polite"></span></button>
+        <button class="ghost" type="button" data-question="What are your prices?">Prices</button>
+        <button class="ghost" type="button" data-question="I need help with my order.">Order help</button>
+        <button class="ghost" type="button" data-question="Can I speak to a person?">Talk to a person</button>
+      </div>
+
+      <div class="panel">
+        <h2>Tell us who you are (optional)</h2>
+        <form class="identify" id="identify">
+          <input type="text" id="name" placeholder="Your name" autocomplete="name">
+          <input type="email" id="email" placeholder="Your email" autocomplete="email">
+          <button class="ghost" type="submit">Save</button>
+        </form>
+        <div id="status" role="status"></div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="feature">
+        <h2>Feature one</h2>
+        <p>A short description of what this does for your customers.</p>
+      </div>
+      <div class="feature">
+        <h2>Feature two</h2>
+        <p>A short description of what this does for your customers.</p>
+      </div>
+      <div class="feature">
+        <h2>Feature three</h2>
+        <p>A short description of what this does for your customers.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    © 2026 Your Company. Use the chat bubble in the corner to reach us.
+  </footer>
+
+  <!-- Intercom Messenger -->
+  <script>
+    // Placeholder user. Replace this with your real logged-in user from your own auth/backend.
+    // Until then, each browser gets its own ID so visitors are not merged into one Intercom user.
+    var user = (function () {
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem('demoUser') || '{}'); } catch (e) {}
+      if (!saved.id) {
+        saved.id = 'visitor-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+        saved.createdAt = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
+        try { localStorage.setItem('demoUser', JSON.stringify(saved)); } catch (e) {}
+      }
+      return saved;
+    })();
+  </script>
+  <script>
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io", // EU workspace? Use https://api-iam.eu.intercom.io
+      app_id: "ur6bm6kz",
+      user_id: user.id,
+      name: user.name,
+      email: user.email,
+      created_at: user.createdAt
+    };
+  </script>
+  <script>
+    // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/ur6bm6kz'
+    (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ur6bm6kz';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  </script>
+  <script>
+    (function () {
+      var statusEl = document.getElementById('status');
+      var badge = document.getElementById('unread');
+      var openBtn = document.getElementById('open-chat');
+      var say = function (t) { statusEl.textContent = t; };
+
+      // Open the Messenger
+      openBtn.addEventListener('click', function () {
+        Intercom('show');
+      });
+
+      // Quick questions: open a new conversation with the text pre-filled
+      document.querySelectorAll('[data-question]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var q = btn.getAttribute('data-question');
+          Intercom('showNewMessage', q);
+          Intercom('trackEvent', 'quick-question-clicked', { question: q });
+        });
+      });
+
+      // Tell Intercom who the visitor is
+      document.getElementById('identify').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var data = {};
+        if (name) data.name = name;
+        if (email) data.email = email;
+        if (!Object.keys(data).length) { say('Add a name or an email first.'); return; }
+        Object.assign(user, data);
+        try { localStorage.setItem('demoUser', JSON.stringify(user)); } catch (err) {}
+        Intercom('update', data);
+        say('Saved. The team will see these details in the chat.');
+      });
+
+      // Listen to what the Messenger is doing
+      Intercom('onUnreadCountChange', function (count) {
+        badge.textContent = count;
+        badge.classList.toggle('on', count > 0);
+      });
+      Intercom('onShow', function () { say('Chat is open.'); });
+      Intercom('onHide', function () { say('Chat closed.'); });
+    })();
+  </script>
+</body>
+</html>
